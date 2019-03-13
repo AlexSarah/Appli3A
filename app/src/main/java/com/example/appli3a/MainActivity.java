@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void launchSacondActivity(View view) {
+    public void launchSecondActivity(View view) {
 
         Log.d(LOG_TAG, "Button clicked!");
 
