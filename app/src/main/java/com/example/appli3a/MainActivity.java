@@ -1,59 +1,42 @@
 package com.example.appli3a;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
 
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    public static final String EXTRA_MESSAGE =
-            "com.example.android.twoactivities.extra.MESSAGE";
+public class MainActivity extends Activity {
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
-    public static final int TEXT_REQUEST = 1;
-
-    private EditText mMessageEditText;
-    private TextView mReplyHeadTextView;
-    private TextView mReplyTextView;
+    private MainController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        recyclerView = findViewById(R.id.my_recycler_view);
 
-        mMessageEditText = (EditText) findViewById(R.id.editText_main);
-        mReplyHeadTextView = (TextView) findViewById(R.id.text_header_reply);
-        mReplyTextView = (TextView) findViewById(R.id.text_message_reply);
+        controller = new MainController(this);
+        controller.onStart();
+
+        // use this setting to
+        // improve performance if you know that changes
+        // in content do not change the layout size
+        // of the RecyclerView
     }
 
-    public void launchSecondActivity(View view) {
-        Log.d(LOG_TAG, "Button clicked!");
-
-        Intent intent = new Intent(this, SecondActivity.class);
-        String message = mMessageEditText.getText().toString();
-
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivityForResult(intent, TEXT_REQUEST);
-    }
-
-    public void onActivityResult(int requestCode, int resultCode,
-                                 Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == TEXT_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                String reply =
-                        data.getStringExtra(SecondActivity.EXTRA_REPLY);
-
-                mReplyHeadTextView.setVisibility(View.VISIBLE);
-                mReplyTextView.setText(reply);
-                mReplyTextView.setVisibility(View.VISIBLE);
-            }
-        }
+    public void showList(List<Api> input){
+        recyclerView.setHasFixedSize(true);
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        // define an adapter
+        mAdapter = new MyAdapter(input);
+        recyclerView.setAdapter(mAdapter);
     }
 }
