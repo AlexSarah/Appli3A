@@ -5,7 +5,5 @@ import retrofit2.http.GET;
 
 public interface RestApi {
     @GET("Mytho.json")
-    //@GET("dog")
-    Call<RestResponse> getListPokemon();
+    Call<RestResponse> getListGod();
 }
-

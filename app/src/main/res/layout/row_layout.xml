@@ -23,10 +23,7 @@
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/icon"
         android:ellipsize="marquee"
-        android:text="@string/description"
-        android:textSize="12sp" android:singleLine="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@id/icon" />
+        android:textSize="12sp" android:singleLine="true"/>
 
     <TextView
         android:id="@+id/firstLine"

@@ -4,15 +4,15 @@ public class Api {
 
     private String name;
     private String description;
-    //private String message
+    //public images images;
 
-    //public String getMessage() {return message; }
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
@@ -23,4 +23,14 @@ public class Api {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    /*
+    public images getImages() {
+        return images;
+    }
+
+    public void setImages(images images) {
+        this.images = images;
+    }
+    */
 }

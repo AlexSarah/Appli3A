@@ -23,35 +23,29 @@ public class MainController {
 
     public void onStart(){
 
-        //Pour ceux qui veulent aller plus loin
-        //Singleton
-        //Pour ceux qui veulent aller encore plus loin
-        // Injection de dépendances
-
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://raw.githubusercontent.com/AlexSarah/APIMythologie/master/")
-                //.baseUrl("https://raw.githubusercontent.com/Metasilveur/MobileFireEmblem/master/dogApi.json")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         RestApi restApi = retrofit.create(RestApi.class);
 
-        Call<RestResponse> call = restApi.getListPokemon();
+        Call<RestResponse> call = restApi.getListGod();
         call.enqueue(new Callback<RestResponse>() {
             @Override
             public void onResponse(Call<RestResponse> call, Response<RestResponse> response) {
                 RestResponse restResponse = response.body();
-                List<Api> listPokemon = restResponse.getResults();
-                activity.showList(listPokemon);
+                List<Api> listGod = restResponse.getResults();
+                activity.showList(listGod);
             }
 
             @Override
             public void onFailure(Call<RestResponse> call, Throwable t) {
-                Log.d("ERROR", "Api Error because onFailure");
+                Log.d("ERROR", "! ERREUR D'API !");
             }
         });
     }
