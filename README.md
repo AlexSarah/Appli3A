@@ -13,8 +13,9 @@ This is a first try to realize an Android project with Android Studio. This is a
  Trying to get the images from the API
  
  ## Screenshots
+ ![ScreenshotList](https://user-images.githubusercontent.com/45857411/55038648-d8072300-5021-11e9-9d9e-0019fdfb815d.png)
  
- 
+ ![ScreenshotGod](https://user-images.githubusercontent.com/45857411/55038647-d8072300-5021-11e9-8755-83ceff937fd3.png)
  
  ## Functionalities
  Scroll a list
